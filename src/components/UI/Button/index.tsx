@@ -3,9 +3,10 @@ import { IconPlus } from "../Icons";
 interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "plus" | "dark" | "red" | "long";
+  className?: string;
 }
 
-const Button = ({ children, variant }: ButtonProps) => {
+const Button = ({ children, variant, className }: ButtonProps) => {
   const primaryClass: string =
     "bg-blue-cornflower text-white hover:bg-heliotrope";
   const plusClass: string =
@@ -46,7 +47,7 @@ const Button = ({ children, variant }: ButtonProps) => {
   return (
     <button
       className={` px-6 py-4 rounded-full font-bold flex items-baseline 
-       ${buttonClass}`}
+       ${buttonClass} ${className}`}
     >
       {variant === "plus" && (
         <div className=" bg-white w-8 h-8 rounded-full flex justify-center items-center mr-4">
