@@ -1,11 +1,13 @@
 import Button from "./components/UI/Button";
+import TextInput from "./components/UI/TextInput";
 import ThemeSwitch from "./components/UI/ThemeSwitch";
 
 function App() {
   return (
     <div>
-      <Button variant="long">Mark as Paid</Button>
       <ThemeSwitch />
+      <Button variant="long">Mark as Paid</Button>
+      <TextInput label="street address" name="street" />
     </div>
   );
 }
