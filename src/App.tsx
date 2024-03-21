@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Button from "./components/UI/Button";
+import DatePicker from "./components/UI/Datepicker";
+import Dropdown from "./components/UI/Dropdown";
+import TextInput from "./components/UI/TextInput";
+import ThemeSwitch from "./components/UI/ThemeSwitch";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ThemeSwitch />
+      <Button variant="long">Mark as Paid</Button>
+      <TextInput label="street address" name="street" />
+      <div className=" w-80">
+        <Dropdown
+          className="ml-6"
+          label="Payment Terms"
+          initialValue={{
+            option: "Net 1 Day",
+            value: "1",
+          }}
+          options={[
+            {
+              option: "Net 1 Day",
+              value: "1",
+            },
+            {
+              option: "Net 7 Days",
+              value: "7",
+            },
+            {
+              option: "Net 14 Days",
+              value: "14",
+            },
+            {
+              option: "Net 30 Days",
+              value: "30",
+            },
+          ]}
+        />
+      </div>
+      <div className=" w-80">
+        <DatePicker label="date" />
+      </div>
     </div>
   );
 }
