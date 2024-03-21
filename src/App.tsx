@@ -1,4 +1,5 @@
 import Button from "./components/UI/Button";
+import DatePicker from "./components/UI/Datepicker";
 import Dropdown from "./components/UI/Dropdown";
 import TextInput from "./components/UI/TextInput";
 import ThemeSwitch from "./components/UI/ThemeSwitch";
@@ -36,6 +37,9 @@ function App() {
             },
           ]}
         />
+      </div>
+      <div className=" w-80">
+        <DatePicker label="date" />
       </div>
     </div>
   );
