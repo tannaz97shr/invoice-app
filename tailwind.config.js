@@ -22,6 +22,7 @@ module.exports = {
         "mona-lisa": "#FF9797",
         "bg-light": "#F8F8FB",
         "mirage-dark": "#141625",
+        "bg-main-menu": "#373B53",
       },
     },
   },
