@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { IconMoon, IconSun } from "../Icons";
 
-const ThemeSwitch = () => {
+interface ThemeSwitchProps {
+  className?: string;
+}
+
+const ThemeSwitch = ({ className }: ThemeSwitchProps) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <button onClick={toggleDarkMode}>
+    <button onClick={toggleDarkMode} className={className}>
       {darkMode ? <IconMoon /> : <IconSun />}
     </button>
   );
