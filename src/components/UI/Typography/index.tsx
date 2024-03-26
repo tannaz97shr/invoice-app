@@ -1,5 +1,5 @@
 export const HeadingLarg = ({ children }: { children: React.ReactNode }) => (
-  <h1 className=" font-bold text-4xl leading-[33px] tracking-[-1px]">
+  <h1 className=" font-bold text-2xl md:text-4xl leading-[33px] tracking-[-1px]">
     {children}
   </h1>
 );
@@ -26,8 +26,16 @@ export const HeadingSmallVariant = ({
   </h4>
 );
 
-export const Paragraph = ({ children }: { children: React.ReactNode }) => (
-  <p className=" font-bold text-sm leading-[18px] tracking-[-0.1px]">
+export const Paragraph = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <p
+    className={` font-bold text-sm leading-[18px] tracking-[-0.1px] ${className}`}
+  >
     {children}
   </p>
 );
