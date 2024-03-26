@@ -1,13 +1,12 @@
+import InvoicesHeader from "../components/InvoicesHeader";
 import MainMenu from "../components/MainMenu";
-import ThemeSwitch from "../components/UI/ThemeSwitch";
 
 export default function Root() {
   return (
     <div className=" flex flex-col md:flex-row">
       <MainMenu />
-      <div>
-        content
-        <ThemeSwitch />
+      <div className="flex flex-col mx-6 mt-8 max-w-[730px] min-[778px]:mx-auto flex-1">
+        <InvoicesHeader invoiceCount={7} />
       </div>
     </div>
   );

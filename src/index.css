@@ -15,3 +15,24 @@ body {
   background-color: #141625;
   color: #dfe3fa;
 }
+.checkbox-wrapper input[type="checkbox"] {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  width: 1.25em;
+  height: 1.256em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  outline: none;
+  cursor: pointer;
+  background-color: #dfe3fa;
+}
+.checkbox-wrapper input[type="checkbox"].checked {
+  background-color: #7c5dfa;
+  position: relative;
+}
+
+input[type="checkbox"]:focus {
+  box-shadow: none;
+}
