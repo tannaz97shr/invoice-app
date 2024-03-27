@@ -5,8 +5,20 @@ import MainMenu from "../components/MainMenu";
 import { IInvoice } from "../models/general";
 
 // use params for status filter
-export async function loader(): Promise<IInvoice[]> {
+export async function loader({
+  request,
+}: {
+  request: any;
+}): Promise<IInvoice[]> {
+  const status = new URL(request.url).searchParams.get("status");
+  const statusArray = status?.split(",");
+  console.log("params of loader", statusArray);
   const { invoices } = await getInvoices();
+  if (statusArray?.length) {
+    return invoices.filter((invoice: IInvoice) =>
+      statusArray.includes(invoice.status)
+    );
+  }
   return invoices;
 }
 

@@ -14,8 +14,10 @@ export default function InvoiceFilter({ option }: InvoiceFilterProps) {
 
   let [searchParams, setSearchParams] = useSearchParams();
   const [selectedItems, setSelectedItems] = useState<string[]>(
-    searchParams.getAll("status")
+    searchParams.get("status")?.split(",") || []
   );
+
+  console.log("items", selectedItems);
 
   useEffect(() => {
     if (selectedItems.length) {
