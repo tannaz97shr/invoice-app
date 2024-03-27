@@ -59,7 +59,6 @@ const DatePicker = ({
   const [selectedDate, setSelectedDate] = useState<Date>();
   const handleChange = (selectedDate: Date) => {
     setSelectedDate(selectedDate);
-    console.log(selectedDate);
   };
   const handleClose = (state: boolean) => {
     setShow(state);

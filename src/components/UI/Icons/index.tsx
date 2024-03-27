@@ -58,7 +58,7 @@ export const IconCalendar = (props: IconProps) => {
       <path
         d="M14 2h-.667V.667A.667.667 0 0012.667 0H12a.667.667 0 00-.667.667V2H4.667V.667A.667.667 0 004 0h-.667a.667.667 0 00-.666.667V2H2C.897 2 0 2.897 0 4v10c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm.667 12c0 .367-.3.667-.667.667H2A.668.668 0 011.333 14V6.693h13.334V14z"
         fill="#7E88C3"
-        fill-rule="nonzero"
+        fillRule="nonzero"
         opacity=".5"
       />
     </svg>
@@ -70,7 +70,7 @@ export const IconLogo = (props: IconProps) => {
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" {...props}>
       <path
         fill="#FFF"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M20.513 0C24.965 2.309 28 6.91 28 12.21 28 19.826 21.732 26 14 26S0 19.826 0 12.21C0 6.91 3.035 2.309 7.487 0L14 12.9z"
       />
     </svg>

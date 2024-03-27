@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setStatus } from "../../features/invoice/invoicesSlice";
-import type { RootState } from "../../store";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Checkbox from "../UI/Checkbox";
 import { IconArrowDown } from "../UI/Icons";
 
@@ -14,11 +12,24 @@ interface InvoiceFilterProps {
 export default function InvoiceFilter({ option }: InvoiceFilterProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const statusItems = useSelector((state: RootState) => state.invoices.status);
-  const dispatch = useDispatch();
-  // const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [selectedItems, setSelectedItems] = useState<string[]>(
+    searchParams.get("status")?.split(",") || []
+  );
 
-  console.log(statusItems);
+  console.log("items", selectedItems);
+
+  useEffect(() => {
+    if (selectedItems.length) {
+      const status = selectedItems.join(",");
+      searchParams.set("status", status);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete("status");
+      setSearchParams(searchParams);
+    }
+  }, [selectedItems]);
+
   return (
     <div className="ml-auto relative">
       <button
@@ -35,20 +46,14 @@ export default function InvoiceFilter({ option }: InvoiceFilterProps) {
             <Checkbox
               key={option.value}
               label={option.value}
-              checked={statusItems.includes(option.value)}
+              checked={selectedItems.includes(option.value)}
               onChange={() => {
-                if (statusItems.includes(option.value)) {
-                  dispatch(
-                    setStatus([
-                      ...statusItems.filter((val) => val !== option.value),
-                    ])
-                  );
-                  // setSelectedItems([
-                  //   ...statusItems.filter((val) => val !== option.value),
-                  // ]);
+                if (selectedItems.includes(option.value)) {
+                  setSelectedItems([
+                    ...selectedItems.filter((val) => val !== option.value),
+                  ]);
                 } else {
-                  dispatch(setStatus([...statusItems, option.value]));
-                  // setSelectedItems([...statusItems, option.value]);
+                  setSelectedItems([...selectedItems, option.value]);
                 }
               }}
             />

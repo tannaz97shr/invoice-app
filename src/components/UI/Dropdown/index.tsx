@@ -17,7 +17,6 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [isActive, setIsActive] = useState(false);
   const [selected, setIsSelected] = useState(initialValue);
-  console.log(selected);
   return (
     <div className={`flex flex-col relative ${className && className}`}>
       <span
