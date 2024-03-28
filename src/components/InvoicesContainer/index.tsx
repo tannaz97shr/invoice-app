@@ -21,7 +21,7 @@ export default function InvoicesContainer() {
     "Dec",
   ];
   return (
-    <div className=" flex flex-col mt-8">
+    <div className=" flex flex-col mt-8 relative">
       {invoices.map((invoice) => {
         const due = new Date(invoice.paymentDue);
         return (
@@ -29,12 +29,12 @@ export default function InvoicesContainer() {
             key={invoice.id}
             className=" flex rounded-lg bg-white p-6 mb-5 justify-between"
           >
-            <div className=" flex flex-col">
-              <HeadingSmall className="mb-6">
+            <div className=" flex flex-col md:flex-row md:items-center">
+              <HeadingSmall className="mb-6 md:mb-0 md:mr-11 md:flex md:items-center">
                 <span className=" text-ship-cove">#</span>
                 {invoice.id}
               </HeadingSmall>
-              <div className="text-ship-cove font-medium text-sm mb-2">
+              <div className="text-ship-cove font-medium text-sm mb-2 md:mb-0 md:flex md:items-center">
                 Due{" "}
                 {due.getDate() +
                   " " +
@@ -42,10 +42,12 @@ export default function InvoicesContainer() {
                   " " +
                   due.getFullYear()}
               </div>
-              <HeadingSmall>£ {invoice.total}</HeadingSmall>
+              <HeadingSmall className=" md:flex md:items-center md:absolute md:right-48 md:my-auto">
+                £ {invoice.total}
+              </HeadingSmall>
             </div>
-            <div className=" flex flex-col">
-              <ParagraphVariant className="text-ship-cove mb-7">
+            <div className=" flex flex-col md:flex-row md:items-center md:flex-1 md:justify-between">
+              <ParagraphVariant className="text-ship-cove mb-7 md:mb-0 md:ml-14">
                 {invoice.clientName}
               </ParagraphVariant>
               <StatusTag status={invoice.status} />
