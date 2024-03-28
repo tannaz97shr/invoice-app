@@ -1,9 +1,9 @@
-import { IInvoicesResponse } from "../models/general";
+import { IInvoice, IInvoicesResponse } from "../models/general";
 
 export const getInvoices = async (): Promise<IInvoicesResponse> => {
   try {
     const response = await fetch("/data.json");
-    const data = await response.json();
+    const data: IInvoice[] = await response.json();
     return {
       invoices: data,
     };
