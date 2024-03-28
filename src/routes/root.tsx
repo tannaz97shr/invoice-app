@@ -14,6 +14,7 @@ export async function loader({
   const statusArray = status?.split(",");
   console.log("params of loader", statusArray);
   const { invoices } = await getInvoices();
+
   if (statusArray?.length) {
     return invoices.filter((invoice: IInvoice) =>
       statusArray.includes(invoice.status)
@@ -24,7 +25,7 @@ export async function loader({
 
 export default function Root() {
   return (
-    <div className=" flex flex-col md:flex-row">
+    <div className=" flex flex-col md:flex-row bg-bg-light dark:bg-mirage-dark">
       <MainMenu />
       <div className="flex flex-col mx-6 mt-8 max-w-[730px] min-[778px]:mx-auto flex-1">
         <InvoicesHeader invoiceCount={7} />

@@ -10,8 +10,16 @@ export const HeadingMedium = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-export const HeadingSmall = ({ children }: { children: React.ReactNode }) => (
-  <h3 className=" font-bold text-[15px] leading-[24px] tracking-[-0.25px]">
+export const HeadingSmall = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <h3
+    className={` font-bold text-[15px] leading-[24px] tracking-[-0.25px] ${className}`}
+  >
     {children}
   </h3>
 );
@@ -42,10 +50,14 @@ export const Paragraph = ({
 
 export const ParagraphVariant = ({
   children,
+  className,
 }: {
   children: React.ReactNode;
+  className?: string;
 }) => (
-  <p className=" font-bold text-sm leading-[15px] tracking-[-0.25px]">
+  <p
+    className={` font-bold text-sm leading-[15px] tracking-[-0.25px] ${className}`}
+  >
     {children}
   </p>
 );
