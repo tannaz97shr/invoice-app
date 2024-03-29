@@ -29,7 +29,7 @@ export default function Root() {
       <MainMenu />
       <div className="w-full md:ml-[72px]">
         <div className="flex flex-col mx-6 mt-8 max-w-[730px] min-[778px]:mx-auto flex-1">
-          <InvoicesHeader invoiceCount={7} />
+          <InvoicesHeader />
           <InvoicesContainer />
         </div>
       </div>
