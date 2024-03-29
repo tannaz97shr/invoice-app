@@ -4,8 +4,16 @@ export const HeadingLarg = ({ children }: { children: React.ReactNode }) => (
   </h1>
 );
 
-export const HeadingMedium = ({ children }: { children: React.ReactNode }) => (
-  <h2 className=" font-bold text-2xl leading-[22px] tracking-[-0.75px]">
+export const HeadingMedium = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <h2
+    className={` font-bold text-2xl leading-[22px] tracking-[-0.75px] ${className}`}
+  >
     {children}
   </h2>
 );

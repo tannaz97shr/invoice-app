@@ -14,13 +14,13 @@ export async function loader({
   const statusArray = status?.split(",");
   console.log("params of loader", statusArray);
   const { invoices } = await getInvoices();
-
-  if (statusArray?.length) {
-    return invoices.filter((invoice: IInvoice) =>
-      statusArray.includes(invoice.status)
-    );
-  }
-  return invoices;
+  return [];
+  // if (statusArray?.length) {
+  //   return invoices.filter((invoice: IInvoice) =>
+  //     statusArray.includes(invoice.status)
+  //   );
+  // }
+  // return invoices;
 }
 
 export default function Root() {
