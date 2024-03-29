@@ -17,8 +17,6 @@ export default function InvoiceFilter({ option }: InvoiceFilterProps) {
     searchParams.get("status")?.split(",") || []
   );
 
-  console.log("items", selectedItems);
-
   useEffect(() => {
     if (selectedItems.length) {
       const status = selectedItems.join(",");
@@ -41,7 +39,7 @@ export default function InvoiceFilter({ option }: InvoiceFilterProps) {
         <IconArrowDown className={isOpen ? "rotate-180" : ""} />
       </button>
       {isOpen && (
-        <div className="checkbox-wrapper absolute w-48 rounded-xl shadow-xl flex flex-col top-full p-4 right-0">
+        <div className="checkbox-wrapper absolute w-48 rounded-xl shadow-xl flex flex-col top-full p-4 right-0 bg-white z-10">
           {option.map((option) => (
             <Checkbox
               key={option.value}

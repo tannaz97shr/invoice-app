@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
 import { IconPlus } from "../Icons";
 
 interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "plus" | "dark" | "red" | "long";
   className?: string;
+  href?: string;
 }
 
-const Button = ({ children, variant, className }: ButtonProps) => {
+const Button = ({ children, variant, className, href }: ButtonProps) => {
   const primaryClass: string =
     "bg-blue-cornflower text-white hover:bg-heliotrope";
   const plusClass: string =
@@ -42,6 +44,22 @@ const Button = ({ children, variant, className }: ButtonProps) => {
     }
     default:
       buttonClass = primaryClass;
+  }
+  if (href) {
+    return (
+      <Link
+        to={href}
+        className={` px-6 py-4 rounded-full font-bold flex items-baseline 
+     ${buttonClass} ${className}`}
+      >
+        {variant === "plus" && (
+          <div className=" bg-white w-8 h-8 rounded-full flex justify-center items-center mr-4">
+            <IconPlus className="m-auto" />
+          </div>
+        )}
+        {children}
+      </Link>
+    );
   }
 
   return (

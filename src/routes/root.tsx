@@ -12,9 +12,7 @@ export async function loader({
 }): Promise<IInvoice[]> {
   const status = new URL(request.url).searchParams.get("status");
   const statusArray = status?.split(",");
-  console.log("params of loader", statusArray);
   const { invoices } = await getInvoices();
-
   if (statusArray?.length) {
     return invoices.filter((invoice: IInvoice) =>
       statusArray.includes(invoice.status)
@@ -29,7 +27,7 @@ export default function Root() {
       <MainMenu />
       <div className="w-full md:ml-[72px]">
         <div className="flex flex-col mx-6 mt-8 max-w-[730px] min-[778px]:mx-auto flex-1">
-          <InvoicesHeader invoiceCount={7} />
+          <InvoicesHeader />
           <InvoicesContainer />
         </div>
       </div>
