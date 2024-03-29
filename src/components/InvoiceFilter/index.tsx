@@ -17,8 +17,6 @@ export default function InvoiceFilter({ option }: InvoiceFilterProps) {
     searchParams.get("status")?.split(",") || []
   );
 
-  console.log("items", selectedItems);
-
   useEffect(() => {
     if (selectedItems.length) {
       const status = selectedItems.join(",");

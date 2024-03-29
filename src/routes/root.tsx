@@ -12,15 +12,13 @@ export async function loader({
 }): Promise<IInvoice[]> {
   const status = new URL(request.url).searchParams.get("status");
   const statusArray = status?.split(",");
-  console.log("params of loader", statusArray);
   const { invoices } = await getInvoices();
-  return [];
-  // if (statusArray?.length) {
-  //   return invoices.filter((invoice: IInvoice) =>
-  //     statusArray.includes(invoice.status)
-  //   );
-  // }
-  // return invoices;
+  if (statusArray?.length) {
+    return invoices.filter((invoice: IInvoice) =>
+      statusArray.includes(invoice.status)
+    );
+  }
+  return invoices;
 }
 
 export default function Root() {

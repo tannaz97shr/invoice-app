@@ -10,7 +10,6 @@ import {
 
 export default function InvoicesContainer() {
   const invoices = useLoaderData() as IInvoice[];
-  console.log("data from container", invoices);
   const months = [
     "Jan",
     "Feb",

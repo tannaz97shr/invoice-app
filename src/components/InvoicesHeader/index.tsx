@@ -28,7 +28,8 @@ export default function InvoicesHeader() {
         ]}
       />
       <Button variant="plus" className="ml-4" href="create">
-        New Invoice
+        <span className="md:hidden">New</span>
+        <span className="hidden md:flex">New Invoice</span>
       </Button>
     </div>
   );
