@@ -1,6 +1,5 @@
+import { Outlet } from "react-router-dom";
 import { getInvoices } from "../api/invoices";
-import InvoicesContainer from "../components/InvoicesContainer";
-import InvoicesHeader from "../components/InvoicesHeader";
 import MainMenu from "../components/MainMenu";
 import { IInvoice } from "../models/general";
 
@@ -26,10 +25,11 @@ export default function Root() {
     <div className=" flex flex-col md:flex-row bg-bg-light dark:bg-mirage-dark min-h-[100vh]">
       <MainMenu />
       <div className="w-full md:ml-[72px]">
-        <div className="flex flex-col mx-6 mt-8 max-w-[730px] min-[778px]:mx-auto flex-1">
+        {/* <div className="flex flex-col mx-6 mt-8 max-w-[730px] min-[778px]:mx-auto flex-1">
           <InvoicesHeader />
           <InvoicesContainer />
-        </div>
+        </div> */}
+        <Outlet />
       </div>
     </div>
   );
