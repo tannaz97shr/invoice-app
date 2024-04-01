@@ -1,7 +1,7 @@
 import { statusType } from "../../models/general";
 import StatusTag from "../StatusTag";
-import Button from "../UI/Button";
 import { ParagraphVariant } from "../UI/Typography";
+import Buttons from "./Buttons";
 
 interface SingleInvoiceHeaderProps {
   status: statusType;
@@ -19,15 +19,7 @@ export default function SingleInvoiceHeader({
         <StatusTag status={status} />
       </div>
       <div className="hidden md:flex gap-2">
-        <Button className="" variant="secondary">
-          Edit
-        </Button>
-        <Button className="" variant="red">
-          Delete
-        </Button>
-        <Button className="" variant="primary">
-          Mark as Paid
-        </Button>
+        <Buttons />
       </div>
     </div>
   );
