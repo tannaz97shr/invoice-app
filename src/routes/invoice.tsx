@@ -1,6 +1,7 @@
 import type { Params } from "react-router-dom";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { getSingleInvoice } from "../api/invoices";
+import { IconArrowLeft } from "../components/UI/Icons";
 import { IInvoice } from "../models/general";
 
 export async function loader({
@@ -13,8 +14,18 @@ export async function loader({
 }
 
 export default function Invoice() {
-  // let { invoiceId } = useParams();
-
   const invoice = useLoaderData() as IInvoice | null;
-  return <div>invoice, {invoice?.id}</div>;
+  const navigate = useNavigate();
+
+  return (
+    <button
+      onClick={() => {
+        navigate(-1);
+      }}
+      className=" flex items-baseline"
+    >
+      <IconArrowLeft />
+      <span className="ml-2">Go Back</span>
+    </button>
+  );
 }
