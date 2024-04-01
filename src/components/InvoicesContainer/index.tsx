@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { IInvoice } from "../../models/general";
 import StatusTag from "../StatusTag";
 import { IconIllustration } from "../UI/Icons";
@@ -30,7 +30,8 @@ export default function InvoicesContainer() {
         {invoices.map((invoice) => {
           const due = new Date(invoice.paymentDue);
           return (
-            <div
+            <Link
+              to={`invoice/${invoice.id}`}
               key={invoice.id}
               className=" flex rounded-lg bg-white p-6 mb-5 justify-between"
             >
@@ -57,7 +58,7 @@ export default function InvoicesContainer() {
                 </ParagraphVariant>
                 <StatusTag status={invoice.status} />
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

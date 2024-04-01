@@ -6,7 +6,7 @@ import ErrorPage from "./error-page";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./routes/home";
-import Invoice from "./routes/invoice";
+import Invoice, { loader as invoicLoader } from "./routes/invoice";
 import Root, { loader as rootLoader } from "./routes/root";
 import { store } from "./store";
 
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       {
         path: "invoice/:invoiceId",
         element: <Invoice />,
+        loader: invoicLoader,
       },
     ],
   },
