@@ -1,6 +1,7 @@
 import type { Params } from "react-router-dom";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { getSingleInvoice } from "../api/invoices";
+import SingleInvoiceContent from "../components/SingleInvoiceContent";
 import SingleInvoiceHeader from "../components/SingleInvoiceHeader";
 import Buttons from "../components/SingleInvoiceHeader/Buttons";
 import { IconArrowLeft } from "../components/UI/Icons";
@@ -34,7 +35,8 @@ export default function Invoice() {
         <span className="ml-2">Go Back</span>
       </button>
       <SingleInvoiceHeader status={invoice.status} />
-      <div className=" flex md:hidden absolute bg-white w-full bottom-0 left-0 justify-between p-6 shadow-md">
+      <SingleInvoiceContent invoice={invoice} />
+      <div className=" flex md:hidden fixed bg-white w-full bottom-0 left-0 justify-between p-6 shadow-md">
         <Buttons />
       </div>
     </>
