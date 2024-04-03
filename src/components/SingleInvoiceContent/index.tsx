@@ -1,4 +1,5 @@
 import { IInvoice } from "../../models/general";
+import InvoiceItemsSummary from "../InvoiceItemSummary";
 import { HeadingSmall } from "../UI/Typography";
 
 interface SingleInvoiceContentProps {
@@ -49,6 +50,7 @@ export default function SingleInvoiceContent({
         <span className="text-ship-cove font-medium">Sent to</span>
         <HeadingSmall>{invoice.clientEmail}</HeadingSmall>
       </div>
+      <InvoiceItemsSummary items={invoice.items} />
     </div>
   );
 }
