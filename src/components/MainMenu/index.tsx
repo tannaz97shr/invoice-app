@@ -3,7 +3,7 @@ import ThemeSwitch from "../UI/ThemeSwitch";
 
 export default function MainMenu() {
   return (
-    <div className=" flex h-[72px] md:h-[100vh] w-full md:w-[72px] bg-bg-main-menu md:flex-col md:rounded-r-xl md:fixed">
+    <div className=" flex h-[72px] md:h-[100vh] w-full md:w-[72px] bg-bg-main-menu md:flex-col md:rounded-r-xl md:fixed z-20">
       <div className=" flex bg-blue-cornflower w-[72px] items-center justify-center rounded-r-xl md:h-[72px]">
         <IconLogo />
       </div>

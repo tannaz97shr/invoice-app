@@ -1,3 +1,5 @@
+import Modal from "../components/Modal";
+
 export default function Edit() {
-  return <div> edit page </div>;
+  return <Modal>the modal</Modal>;
 }

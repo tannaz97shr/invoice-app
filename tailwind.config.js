@@ -29,6 +29,7 @@ module.exports = {
         "bg-paid": "rgba(51, 214, 159, 0.2)",
         "text-draft": "#373B53",
         "bg-draft": "rgba(55, 59, 83, 0.2)",
+        "bg-backdrop": "rgba(0, 0, 0, 0.25)",
       },
     },
   },
