@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import Edit from "./routes/edit";
 import Home from "./routes/home";
 import Invoice, { loader as invoicLoader } from "./routes/invoice";
 import Root, { loader as rootLoader } from "./routes/root";
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
       {
         path: "invoice/:invoiceId",
         element: <Invoice />,
+        loader: invoicLoader,
+      },
+      {
+        path: "invoice/:invoiceId/edit",
+        element: <Edit />,
         loader: invoicLoader,
       },
     ],
