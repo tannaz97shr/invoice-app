@@ -65,7 +65,13 @@ const DatePicker = ({
   };
 
   return (
-    <div className="relative">
+    <div className={`relative ${className}`}>
+      <span
+        className=" capitalize text-ship-cove font-medium text-sm
+      dark:text-selago"
+      >
+        {label}
+      </span>
       <Datepicker
         options={options}
         onChange={handleChange}

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import Create, { action as createAction } from "./routes/create";
 import Edit from "./routes/edit";
 import Home from "./routes/home";
 import Invoice, { loader as invoicLoader } from "./routes/invoice";
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
         path: "invoice/:invoiceId",
         element: <Invoice />,
         loader: invoicLoader,
+      },
+      {
+        path: "invoice/create",
+        element: <Create />,
+        action: createAction,
       },
       {
         path: "invoice/:invoiceId/edit",

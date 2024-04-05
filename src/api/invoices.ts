@@ -36,3 +36,7 @@ export const getSingleInvoice = async (
     };
   }
 };
+
+export const createInvoice = async () => {
+  console.log("crete invoice here");
+};

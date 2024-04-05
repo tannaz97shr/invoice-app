@@ -25,7 +25,7 @@ dark:text-selago"
       >
         {label}
       </span>
-      <button
+      <div
         onClick={(e) => {
           setIsActive(!isActive);
         }}
@@ -36,7 +36,7 @@ dark:text-selago"
       >
         <span>{selected.option}</span>
         <IconArrowDown />
-      </button>
+      </div>
       {isActive && (
         <ul className=" absolute shadow-lg bg-white w-full top-[120%] rounded-lg">
           {options.map((option, index) => (

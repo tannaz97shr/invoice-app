@@ -1,11 +1,12 @@
 interface TextInputProps {
   label: string;
   name: string;
+  className?: string;
 }
 
-const TextInput = ({ label, name }: TextInputProps) => {
+const TextInput = ({ label, name, className }: TextInputProps) => {
   return (
-    <label className=" flex flex-col">
+    <label className={` flex flex-col ${className}`}>
       <span
         className=" capitalize text-ship-cove font-medium text-sm
       dark:text-selago"
