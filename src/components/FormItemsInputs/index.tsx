@@ -13,10 +13,14 @@ export default function FormItemsInputs({ onDelete }: FormItemsInputsProps) {
   return (
     <>
       <div className="flex flex-wrap justify-between">
-        <TextInput className="w-full mb-4" label="Item Name" name="itemName" />
+        <TextInput
+          className="w-full mb-4 md:w-[45%]"
+          label="Item Name"
+          name="itemName"
+        />
         <TextInput
           type="number"
-          className="w-[20%]"
+          className="w-[20%] md:w-[10%]"
           label="Qty."
           name="quantity"
           min={1}
@@ -27,7 +31,7 @@ export default function FormItemsInputs({ onDelete }: FormItemsInputsProps) {
         />
         <TextInput
           type="number"
-          className="w-[35%]"
+          className="w-[35%] md:w-[18%]"
           label="Price"
           name="price"
           min={0}
@@ -36,7 +40,7 @@ export default function FormItemsInputs({ onDelete }: FormItemsInputsProps) {
             setPrice(Number(e.currentTarget.value));
           }}
         />
-        <div className="flex flex-col w-[35%]">
+        <div className="flex flex-col w-[35%] md:w-[18%]">
           <span
             className=" capitalize text-ship-cove font-medium text-sm
       dark:text-selago"
