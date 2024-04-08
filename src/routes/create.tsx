@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Form } from "react-router-dom";
 import { createInvoice } from "../api/invoices";
+import FormItemsInputs from "../components/FormItemsInputs";
 import GoBackButton from "../components/GoBackButton";
 import Modal from "../components/Modal";
 import DatePicker from "../components/UI/Datepicker";
@@ -12,6 +14,8 @@ export async function action() {
 }
 
 export default function Create() {
+  const [itemCount, setItemCount] = useState<number[]>([]);
+  console.log(itemCount);
   return (
     <Modal>
       <GoBackButton />
@@ -91,6 +95,27 @@ export default function Create() {
           label="Project Description"
           name="description"
         />
+        <div className=" font-bold text-lg text-bali-hai mt-16 mb-6">
+          Item List
+        </div>
+        {itemCount.map((item) => (
+          <FormItemsInputs
+            key={item}
+            onDelete={() =>
+              setItemCount([...itemCount.filter((number) => number !== item)])
+            }
+          />
+        ))}
+        <div
+          className=" px-6 py-4 mt-4 rounded-full font-bold flex items-baseline w-full bg-bg-light text-ship-cove hover:bg-selago justify-center cursor-pointer"
+          onClick={() => {
+            setItemCount((prev) =>
+              prev.length ? [...prev, prev[prev.length - 1] + 1] : [0]
+            );
+          }}
+        >
+          Add New Item
+        </div>
       </Form>
     </Modal>
   );
