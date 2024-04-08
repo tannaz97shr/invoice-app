@@ -2,9 +2,21 @@ interface TextInputProps {
   label: string;
   name: string;
   className?: string;
+  type?: string;
+  min?: number;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 
-const TextInput = ({ label, name, className }: TextInputProps) => {
+const TextInput = ({
+  label,
+  name,
+  className,
+  type,
+  min,
+  value,
+  onChange,
+}: TextInputProps) => {
   return (
     <label className={` flex flex-col ${className}`}>
       <span
@@ -15,6 +27,10 @@ const TextInput = ({ label, name, className }: TextInputProps) => {
       </span>
       <input
         name={name}
+        type={type}
+        min={min}
+        onChange={onChange}
+        value={value}
         className="border border-selago py-4 px-5 text-base rounded mt-2 font-bold text-vulcan 
         focus-visible:outline-offset-1 focus-visible:outline-heliotrope
         dark:bg-mirage dark:text-white dark:focus-visible:outline-none dark:border-ebony-clay"

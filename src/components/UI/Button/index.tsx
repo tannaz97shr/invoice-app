@@ -6,9 +6,16 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "plus" | "dark" | "red" | "long";
   className?: string;
   href?: string;
+  onClick?: () => void;
 }
 
-const Button = ({ children, variant, className, href }: ButtonProps) => {
+const Button = ({
+  children,
+  variant,
+  className,
+  href,
+  onClick,
+}: ButtonProps) => {
   const primaryClass: string =
     "bg-blue-cornflower text-white hover:bg-heliotrope";
   const plusClass: string =
@@ -66,6 +73,7 @@ const Button = ({ children, variant, className, href }: ButtonProps) => {
     <button
       className={` px-6 py-4 rounded-full font-bold flex items-baseline 
        ${buttonClass} ${className}`}
+      onClick={onClick && onClick}
     >
       {variant === "plus" && (
         <div className=" bg-white w-8 h-8 rounded-full flex justify-center items-center mr-4">
