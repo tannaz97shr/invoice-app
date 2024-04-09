@@ -4,6 +4,7 @@ import { createInvoice } from "../api/invoices";
 import FormItemsInputs from "../components/FormItemsInputs";
 import GoBackButton from "../components/GoBackButton";
 import Modal from "../components/Modal";
+import Button from "../components/UI/Button";
 import DatePicker from "../components/UI/Datepicker";
 import Dropdown from "../components/UI/Dropdown";
 import TextInput from "../components/UI/TextInput";
@@ -115,6 +116,18 @@ export default function Create() {
           }}
         >
           Add New Item
+        </div>
+        <div
+          className="flex mx-[-1.5rem] mb-[-2rem] mt-6 shadow-top md:shadow-none justify-between py-4
+        md:mx-0 md:mb-0"
+        >
+          <Button className="text-sm" variant="secondary">
+            Discard
+          </Button>
+          <Button className="text-sm md:ml-auto md:mr-2" variant="dark">
+            Save as Draft
+          </Button>
+          <Button className="text-sm">Save & Draft</Button>
         </div>
       </Form>
     </Modal>
