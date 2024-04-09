@@ -13,6 +13,11 @@ import { HeadingMedium } from "../components/UI/Typography";
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
+  for (let key in updates) {
+    if (key.includes("quantity")) {
+      console.log(updates[key]);
+    }
+  }
   console.log(updates);
   await createInvoice();
   return redirect("/invoice/create");
@@ -106,6 +111,7 @@ export default function Create() {
         {itemCount.map((item) => (
           <FormItemsInputs
             key={item}
+            itemNumber={item}
             onDelete={() =>
               setItemCount([...itemCount.filter((number) => number !== item)])
             }

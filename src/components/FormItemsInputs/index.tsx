@@ -4,9 +4,13 @@ import TextInput from "../UI/TextInput";
 
 interface FormItemsInputsProps {
   onDelete: () => void;
+  itemNumber: number;
 }
 
-export default function FormItemsInputs({ onDelete }: FormItemsInputsProps) {
+export default function FormItemsInputs({
+  onDelete,
+  itemNumber,
+}: FormItemsInputsProps) {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
   const total = quantity * price;
@@ -14,15 +18,15 @@ export default function FormItemsInputs({ onDelete }: FormItemsInputsProps) {
     <>
       <div className="flex flex-wrap justify-between">
         <TextInput
-          className="w-full mb-4 md:w-[45%]"
+          className="w-full mb-4 md:w-[40%]"
           label="Item Name"
-          name="itemName"
+          name={`itemName-${itemNumber}`}
         />
         <TextInput
           type="number"
-          className="w-[20%] md:w-[10%]"
+          className="w-[20%] md:w-[15%]"
           label="Qty."
-          name="quantity"
+          name={`quantity-${itemNumber}`}
           min={1}
           value={quantity.toString()}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
@@ -33,7 +37,7 @@ export default function FormItemsInputs({ onDelete }: FormItemsInputsProps) {
           type="number"
           className="w-[35%] md:w-[18%]"
           label="Price"
-          name="price"
+          name={`price-${itemNumber}`}
           min={0}
           value={price.toFixed(0).toString()}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
