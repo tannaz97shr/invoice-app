@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import { createInvoice } from "../api/invoices";
 import FormItemsInputs from "../components/FormItemsInputs";
 import GoBackButton from "../components/GoBackButton";
@@ -10,8 +10,12 @@ import Dropdown from "../components/UI/Dropdown";
 import TextInput from "../components/UI/TextInput";
 import { HeadingMedium } from "../components/UI/Typography";
 
-export async function action() {
+export async function action({ request }: { request: Request }) {
+  const formData = await request.formData();
+  const updates = Object.fromEntries(formData);
+  console.log(updates);
   await createInvoice();
+  return redirect("/invoice/create");
 }
 
 export default function Create() {
@@ -127,7 +131,9 @@ export default function Create() {
           <Button className="text-sm md:ml-auto md:mr-2" variant="dark">
             Save as Draft
           </Button>
-          <Button className="text-sm">Save & Draft</Button>
+          <Button className="text-sm" type="submit">
+            Save & Send
+          </Button>
         </div>
       </Form>
     </Modal>
