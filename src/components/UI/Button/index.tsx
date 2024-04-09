@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string;
   href?: string;
   onClick?: () => void;
+  type?: "submit" | "reset" | "button";
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   variant,
   className,
   href,
+  type,
   onClick,
 }: ButtonProps) => {
   const primaryClass: string =
@@ -74,6 +76,7 @@ const Button = ({
       className={` px-6 py-4 rounded-full font-bold flex items-baseline 
        ${buttonClass} ${className}`}
       onClick={onClick && onClick}
+      type={type}
     >
       {variant === "plus" && (
         <div className=" bg-white w-8 h-8 rounded-full flex justify-center items-center mr-4">

@@ -1,16 +1,26 @@
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import { createInvoice } from "../api/invoices";
 import FormItemsInputs from "../components/FormItemsInputs";
 import GoBackButton from "../components/GoBackButton";
 import Modal from "../components/Modal";
+import Button from "../components/UI/Button";
 import DatePicker from "../components/UI/Datepicker";
 import Dropdown from "../components/UI/Dropdown";
 import TextInput from "../components/UI/TextInput";
 import { HeadingMedium } from "../components/UI/Typography";
 
-export async function action() {
+export async function action({ request }: { request: Request }) {
+  const formData = await request.formData();
+  const updates = Object.fromEntries(formData);
+  for (let key in updates) {
+    if (key.includes("quantity")) {
+      console.log(updates[key]);
+    }
+  }
+  console.log(updates);
   await createInvoice();
+  return redirect("/invoice/create");
 }
 
 export default function Create() {
@@ -101,6 +111,7 @@ export default function Create() {
         {itemCount.map((item) => (
           <FormItemsInputs
             key={item}
+            itemNumber={item}
             onDelete={() =>
               setItemCount([...itemCount.filter((number) => number !== item)])
             }
@@ -115,6 +126,20 @@ export default function Create() {
           }}
         >
           Add New Item
+        </div>
+        <div
+          className="flex mx-[-1.5rem] mb-[-2rem] mt-6 shadow-top md:shadow-none justify-between py-4
+        md:mx-0 md:mb-0"
+        >
+          <Button className="text-sm" variant="secondary">
+            Discard
+          </Button>
+          <Button className="text-sm md:ml-auto md:mr-2" variant="dark">
+            Save as Draft
+          </Button>
+          <Button className="text-sm" type="submit">
+            Save & Send
+          </Button>
         </div>
       </Form>
     </Modal>

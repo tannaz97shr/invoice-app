@@ -86,7 +86,7 @@ const DatePicker = ({
         >
           <input
             type="text"
-            className=" w-full h-full border-none focus:outline-none focus:shadow-none focus:ring-0"
+            className=" w-full h-full border-none focus:outline-none focus:shadow-none focus:ring-0 bg-transparent"
             placeholder="Select Date"
             value={selectedDate?.toDateString()}
             onFocus={() => setShow(true)}
