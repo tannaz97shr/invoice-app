@@ -13,12 +13,25 @@ import { HeadingMedium } from "../components/UI/Typography";
 export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
+  console.log("updates", updates);
+  let itemsArray: any[] = [];
   for (let key in updates) {
     if (key.includes("quantity")) {
-      console.log(updates[key]);
+      itemsArray = [
+        ...itemsArray,
+        {
+          name: updates[key.replace("quantity", "itemName")],
+          quantity: updates[key],
+          price: updates[key.replace("quantity", "price")],
+          total:
+            Number(updates[key]) *
+            Number(updates[key.replace("quantity", "price")]),
+        },
+      ];
     }
   }
-  console.log(updates);
+
+  console.log("itemsArray", itemsArray);
   await createInvoice();
   return redirect("/invoice/create");
 }
