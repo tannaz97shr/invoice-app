@@ -4,20 +4,16 @@ import { IOptions } from "tailwind-datepicker-react/types/Options";
 import { IconCalendar } from "../Icons";
 
 interface DropdownProps {
-  //   options: IDropdownOption[];
-  //   initialValue: IDropdownOption;
+  name: string;
   label: string;
   className?: string;
+  required?: boolean;
 }
 
-const DatePicker = ({
-  //   options,
-  //   initialValue,
-  label,
-  className,
-}: DropdownProps) => {
+const DatePicker = ({ name, label, className, required }: DropdownProps) => {
   const options: IOptions = {
-    title: "Demo Title",
+    title: label,
+    inputNameProp: name,
     autoHide: true,
     todayBtn: false,
     clearBtn: true,
@@ -45,7 +41,6 @@ const DatePicker = ({
     language: "en",
     disabledDates: [],
     weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-    inputNameProp: "date",
     inputIdProp: "date",
     inputPlaceholderProp: "Select Date",
     inputDateFormatProp: {
@@ -90,7 +85,8 @@ const DatePicker = ({
             placeholder="Select Date"
             value={selectedDate?.toDateString()}
             onFocus={() => setShow(true)}
-            readOnly
+            name={name}
+            required={required}
           />
           <div className="...">
             <IconCalendar />

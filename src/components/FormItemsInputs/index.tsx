@@ -21,11 +21,13 @@ export default function FormItemsInputs({
           className="w-full mb-4 md:w-[40%]"
           label="Item Name"
           name={`itemName-${itemNumber}`}
+          required
         />
         <TextInput
           type="number"
           className="w-[20%] md:w-[15%]"
           label="Qty."
+          required
           name={`quantity-${itemNumber}`}
           min={1}
           value={quantity.toString()}
@@ -37,6 +39,7 @@ export default function FormItemsInputs({
           type="number"
           className="w-[35%] md:w-[18%]"
           label="Price"
+          required
           name={`price-${itemNumber}`}
           min={0}
           value={price.toFixed(0).toString()}
