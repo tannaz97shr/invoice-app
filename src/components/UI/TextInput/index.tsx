@@ -6,6 +6,7 @@ interface TextInputProps {
   min?: number;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   value?: string;
+  required?: boolean;
 }
 
 const TextInput = ({
@@ -16,6 +17,7 @@ const TextInput = ({
   min,
   value,
   onChange,
+  required,
 }: TextInputProps) => {
   return (
     <label className={` flex flex-col ${className}`}>
@@ -31,6 +33,7 @@ const TextInput = ({
         min={min}
         onChange={onChange}
         value={value}
+        required={required}
         className="border border-selago py-4 px-5 text-base rounded mt-2 font-bold text-vulcan 
         focus-visible:outline-offset-1 focus-visible:outline-heliotrope
         dark:bg-mirage dark:text-white dark:focus-visible:outline-none dark:border-ebony-clay"

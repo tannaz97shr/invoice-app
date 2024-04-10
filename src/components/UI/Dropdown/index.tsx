@@ -7,6 +7,7 @@ interface DropdownProps {
   initialValue: IDropdownOption;
   label: string;
   className?: string;
+  name: string;
 }
 
 const Dropdown = ({
@@ -14,6 +15,7 @@ const Dropdown = ({
   initialValue,
   label,
   className,
+  name,
 }: DropdownProps) => {
   const [isActive, setIsActive] = useState(false);
   const [selected, setIsSelected] = useState(initialValue);
@@ -25,6 +27,7 @@ dark:text-selago"
       >
         {label}
       </span>
+      <input className="hidden" name={name} value={selected.value} />
       <div
         onClick={(e) => {
           setIsActive(!isActive);
