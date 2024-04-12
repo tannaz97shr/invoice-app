@@ -1,15 +1,19 @@
 import { useState } from "react";
+import { UseFormRegister } from "react-hook-form";
+import { FormInputs } from "../../models/general";
 import { IconDelete } from "../UI/Icons";
 import TextInput from "../UI/TextInput";
 
 interface FormItemsInputsProps {
   onDelete: () => void;
   itemNumber: number;
+  register: UseFormRegister<FormInputs>;
 }
 
 export default function FormItemsInputs({
   onDelete,
   itemNumber,
+  register,
 }: FormItemsInputsProps) {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
@@ -22,6 +26,7 @@ export default function FormItemsInputs({
           label="Item Name"
           name={`itemName-${itemNumber}`}
           required
+          register={register}
         />
         <TextInput
           type="number"
@@ -30,12 +35,14 @@ export default function FormItemsInputs({
           required
           name={`quantity-${itemNumber}`}
           min={1}
+          register={register}
           value={quantity.toString()}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             setQuantity(Number(e.currentTarget.value));
           }}
         />
         <TextInput
+          register={register}
           type="number"
           className="w-[35%] md:w-[18%]"
           label="Price"

@@ -10,7 +10,7 @@ export interface IInvoice {
   createdAt: string;
   paymentDue: string;
   description: string;
-  paymentTerms: 1;
+  paymentTerms: number;
   clientName: string;
   clientEmail: string;
   status: statusType;
@@ -38,3 +38,18 @@ export interface IInvoice {
 export interface IInvoicesResponse {
   invoices: IInvoice[];
 }
+
+export type FormInputs = {
+  street: string;
+  city: string;
+  postCode: string;
+  country: string;
+  clientName: string;
+  clientEmail: string;
+  clientStreet: string;
+  clientCity: string;
+  clientPostCode: string;
+  clientCountry: string;
+  description: string;
+  [key: string]: string;
+};
