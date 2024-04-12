@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { IDropdownOption } from "../../../models/general";
+import { UseFormRegister } from "react-hook-form";
+import { FormInputs, IDropdownOption } from "../../../models/general";
 import { IconArrowDown } from "../Icons";
 
 interface DropdownProps {
@@ -8,6 +9,7 @@ interface DropdownProps {
   label: string;
   className?: string;
   name: string;
+  register: UseFormRegister<FormInputs>;
 }
 
 const Dropdown = ({
@@ -16,6 +18,7 @@ const Dropdown = ({
   label,
   className,
   name,
+  register,
 }: DropdownProps) => {
   const [isActive, setIsActive] = useState(false);
   const [selected, setIsSelected] = useState(initialValue);
@@ -27,7 +30,7 @@ dark:text-selago"
       >
         {label}
       </span>
-      <input className="hidden" name={name} value={selected.value} />
+      <input className="hidden" {...register(name)} value={selected.value} />
       <div
         onClick={(e) => {
           setIsActive(!isActive);

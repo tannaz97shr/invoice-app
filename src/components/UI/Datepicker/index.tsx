@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { UseFormRegister } from "react-hook-form";
 import Datepicker from "tailwind-datepicker-react";
 import { IOptions } from "tailwind-datepicker-react/types/Options";
+import { FormInputs } from "../../../models/general";
 import { IconCalendar } from "../Icons";
 
 interface DropdownProps {
@@ -8,9 +10,16 @@ interface DropdownProps {
   label: string;
   className?: string;
   required?: boolean;
+  register: UseFormRegister<FormInputs>;
 }
 
-const DatePicker = ({ name, label, className, required }: DropdownProps) => {
+const DatePicker = ({
+  name,
+  label,
+  className,
+  required,
+  register,
+}: DropdownProps) => {
   const options: IOptions = {
     title: label,
     inputNameProp: name,
@@ -58,7 +67,6 @@ const DatePicker = ({ name, label, className, required }: DropdownProps) => {
   const handleClose = (state: boolean) => {
     setShow(state);
   };
-
   return (
     <div className={`relative ${className}`}>
       <span
@@ -85,7 +93,7 @@ const DatePicker = ({ name, label, className, required }: DropdownProps) => {
             placeholder="Select Date"
             value={selectedDate?.toDateString()}
             onFocus={() => setShow(true)}
-            name={name}
+            {...register(name)}
             required={required}
           />
           <div className="...">

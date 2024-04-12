@@ -36,7 +36,10 @@ export const getSingleInvoice = async (
     };
   }
 };
-
-export const createInvoice = async () => {
-  console.log("crete invoice here");
+export const createInvoice = async (invoice: IInvoice) => {
+  console.log("create invoice api", invoice);
+  let data = await fetch("/data.json");
+  const invoices = await data.json();
+  const newInvoices = [...invoices, invoice];
+  console.log("crete invoice here", invoices);
 };
