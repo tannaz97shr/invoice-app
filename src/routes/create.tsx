@@ -1,7 +1,6 @@
 import _uniqueId from "lodash/uniqueId";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { redirect } from "react-router-dom";
 import { createInvoice } from "../api/invoices";
 import FormItemsInputs from "../components/FormItemsInputs";
 import GoBackButton from "../components/GoBackButton";
@@ -13,62 +12,6 @@ import TextInput from "../components/UI/TextInput";
 import { HeadingMedium } from "../components/UI/Typography";
 import { FormInputs, IInvoice } from "../models/general";
 
-export async function action({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
-  let totalValue = 0;
-  let itemsArray: any[] = [];
-  for (let key in updates) {
-    if (key.includes("quantity")) {
-      itemsArray = [
-        ...itemsArray,
-        {
-          name: updates[key.replace("quantity", "itemName")],
-          quantity: updates[key],
-          price: updates[key.replace("quantity", "price")],
-          total:
-            Number(updates[key]) *
-            Number(updates[key.replace("quantity", "price")]),
-        },
-      ];
-      totalValue =
-        totalValue +
-        Number(updates[key]) *
-          Number(updates[key.replace("quantity", "price")]);
-    }
-  }
-  const now = new Date();
-  const paymentDueDate = new Date(updates["paymentDue"].toString());
-  const invoice: IInvoice = {
-    id: _uniqueId(),
-    createdAt: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`,
-    paymentDue: `${paymentDueDate.getFullYear()}-${
-      paymentDueDate.getMonth() + 1
-    }-${paymentDueDate.getDate()}`,
-    description: updates["description"] as string,
-    paymentTerms: Number(updates["paymentTerms"]),
-    clientName: updates["clientName"] as string,
-    clientEmail: updates["clientEmail"] as string,
-    status: "paid",
-    senderAddress: {
-      street: updates["street"] as string,
-      city: updates["city"] as string,
-      postCode: updates["postcode"] as string,
-      country: updates["country"] as string,
-    },
-    clientAddress: {
-      street: updates["clientStreet"] as string,
-      city: updates["clientCity"] as string,
-      postCode: updates["clientPostCode"] as string,
-      country: updates["clientCountry"] as string,
-    },
-    items: itemsArray,
-    total: totalValue,
-  };
-  await createInvoice(invoice);
-  return redirect("/invoice/create");
-}
-
 export default function Create() {
   const [itemCount, setItemCount] = useState<number[]>([]);
 
@@ -78,9 +21,59 @@ export default function Create() {
     watch,
     formState: { errors },
   } = useForm<FormInputs>();
-  const onSubmit: SubmitHandler<FormInputs> = (data) =>
-    console.log("data", data);
 
+  const onSubmit: SubmitHandler<FormInputs> = async (updates) => {
+    let totalValue = 0;
+    let itemsArray: any[] = [];
+    for (let key in updates) {
+      if (key.includes("quantity")) {
+        itemsArray = [
+          ...itemsArray,
+          {
+            name: updates[key.replace("quantity", "itemName")],
+            quantity: updates[key],
+            price: updates[key.replace("quantity", "price")],
+            total:
+              Number(updates[key]) *
+              Number(updates[key.replace("quantity", "price")]),
+          },
+        ];
+        totalValue =
+          totalValue +
+          Number(updates[key]) *
+            Number(updates[key.replace("quantity", "price")]);
+      }
+    }
+    const now = new Date();
+    const paymentDueDate = new Date(updates["paymentDue"].toString());
+    const invoice: IInvoice = {
+      id: _uniqueId(),
+      createdAt: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`,
+      paymentDue: `${paymentDueDate.getFullYear()}-${
+        paymentDueDate.getMonth() + 1
+      }-${paymentDueDate.getDate()}`,
+      description: updates["description"] as string,
+      paymentTerms: Number(updates["paymentTerms"]),
+      clientName: updates["clientName"] as string,
+      clientEmail: updates["clientEmail"] as string,
+      status: "paid",
+      senderAddress: {
+        street: updates["street"] as string,
+        city: updates["city"] as string,
+        postCode: updates["postcode"] as string,
+        country: updates["country"] as string,
+      },
+      clientAddress: {
+        street: updates["clientStreet"] as string,
+        city: updates["clientCity"] as string,
+        postCode: updates["clientPostCode"] as string,
+        country: updates["clientCountry"] as string,
+      },
+      items: itemsArray,
+      total: totalValue,
+    };
+    await createInvoice(invoice);
+  };
   return (
     <Modal>
       <GoBackButton />
